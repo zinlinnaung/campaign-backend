@@ -1,0 +1,31 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/client"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Code {
+  id        Int      @id @default(autoincrement())
+  prizeName String
+  code      String   @unique
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  CustomerRecord CustomerRecord[]
+}
+
+model CustomerRecord {
+  id         Int      @id @default(autoincrement())
+  name       String
+  phone      String   @unique
+  codeId     Int
+  code       Code     @relation(fields: [codeId], references: [id])
+  outletName String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
