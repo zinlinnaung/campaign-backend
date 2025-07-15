@@ -19,13 +19,11 @@ export class CodeGeneratorController {
 
   @Get('export')
   async exportCodesToCSV(@Res() res: Response) {
-    const filePath = await this.service.exportToCSV();
+    const csv = await this.service.exportToCSV();
 
     res.setHeader('Content-Disposition', 'attachment; filename="codes.csv"');
     res.setHeader('Content-Type', 'text/csv');
-
-    const fileStream = fs.createReadStream(filePath);
-    fileStream.pipe(res);
+    res.send(csv); // Send CSV content directly
   }
   @Get('all')
   async getAllCodes() {

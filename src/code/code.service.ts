@@ -36,15 +36,15 @@ export class CodeGeneratorService {
     const totalNeeded = 2000;
     const perPrize = 1000;
 
-    // 🔍 1. Fetch all existing codes
+    // 🔍 1. Fetch existing codes
     const existing = await this.prisma.code.findMany({
       select: { code: true },
     });
     const existingSet = new Set(existing.map((e) => e.code));
 
-    // 🔢 2. Generate 1000 for each prize
+    // 🔢 2. Generate codes
     const ferrovitCodes = this.generateUniqueCodes(perPrize, 6, existingSet);
-    ferrovitCodes.forEach((c) => existingSet.add(c)); // Avoid collision
+    ferrovitCodes.forEach((c) => existingSet.add(c));
     const enatCodes = this.generateUniqueCodes(perPrize, 6, existingSet);
 
     const finalCodes = [
@@ -57,18 +57,14 @@ export class CodeGeneratorService {
       finalCodes.map((codeObj) => this.prisma.code.create({ data: codeObj })),
     );
 
-    // 🧾 4. Export to CSV
+    // 🧾 4. Convert to CSV (no file saving)
     const data = inserted.map((item) => ({
       code: item.code,
       name: item.prizeName,
     }));
 
     const parser = new Parser({ fields: ['code', 'name'] });
-    const csv = parser.parse(data);
-    const filePath = path.join(__dirname, '..', '..', 'codes.csv');
-    writeFileSync(filePath, csv);
-
-    return filePath;
+    return parser.parse(data); // Return CSV string
   }
   async getAllCodes() {
     return this.prisma.code.findMany({
