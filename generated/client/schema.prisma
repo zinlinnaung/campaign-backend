@@ -22,7 +22,7 @@ model Code {
 model CustomerRecord {
   id         Int      @id @default(autoincrement())
   name       String
-  phone      String   @unique
+  phone      String
   codeId     Int
   code       Code     @relation(fields: [codeId], references: [id])
   outletName String

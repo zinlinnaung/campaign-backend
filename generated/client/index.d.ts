@@ -3161,17 +3161,17 @@ export namespace Prisma {
 
   export type CustomerRecordWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    phone?: string
     AND?: CustomerRecordWhereInput | CustomerRecordWhereInput[]
     OR?: CustomerRecordWhereInput[]
     NOT?: CustomerRecordWhereInput | CustomerRecordWhereInput[]
     name?: StringFilter<"CustomerRecord"> | string
+    phone?: StringFilter<"CustomerRecord"> | string
     codeId?: IntFilter<"CustomerRecord"> | number
     outletName?: StringFilter<"CustomerRecord"> | string
     createdAt?: DateTimeFilter<"CustomerRecord"> | Date | string
     updatedAt?: DateTimeFilter<"CustomerRecord"> | Date | string
     code?: XOR<CodeScalarRelationFilter, CodeWhereInput>
-  }, "id" | "phone">
+  }, "id">
 
   export type CustomerRecordOrderByWithAggregationInput = {
     id?: SortOrder

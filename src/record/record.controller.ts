@@ -8,9 +8,14 @@ import {
   Delete,
   ParseIntPipe,
   Query,
+  UseInterceptors,
+  UploadedFile,
 } from '@nestjs/common';
 import { CustomerRecordService } from './record.service';
 import { CreateCustomerRecordDto, UpdateCustomerRecordDto } from './dto';
+import { FileInterceptor } from '@nestjs/platform-express';
+
+import * as multer from 'multer';
 
 @Controller('customer-records')
 export class CustomerRecordController {
@@ -19,6 +24,16 @@ export class CustomerRecordController {
   @Post()
   async create(@Body() dto: CreateCustomerRecordDto) {
     return this.service.create(dto);
+  }
+
+  @Post('upload-excel')
+  async uploadExcel(@Body() body: { records: any[] }) {
+    return this.service.bulkCreateFromExcelData(body.records);
+  }
+
+  @Post('upload-excel-data')
+  async uploadExcelData(@Body() body: { records: any[] }) {
+    return this.service.bulkCreateFromExcelData(body.records);
   }
 
   @Get()

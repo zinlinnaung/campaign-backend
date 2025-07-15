@@ -5,6 +5,7 @@ import {
 } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateCustomerRecordDto, UpdateCustomerRecordDto } from './dto';
+import * as XLSX from 'xlsx';
 
 @Injectable()
 export class CustomerRecordService {
@@ -154,5 +155,120 @@ export class CustomerRecordService {
       where: { id },
     });
     if (!exists) throw new NotFoundException('Customer record not found');
+  }
+
+  async importFromExcel(file: Express.Multer.File) {
+    const workbook = XLSX.read(file.buffer, { type: 'buffer' });
+    const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+    const rows = XLSX.utils.sheet_to_json(worksheet);
+
+    let createdCount = 0;
+    const invalidCodes: string[] = [];
+
+    for (const row of rows) {
+      const name = row['name'];
+      const phone = row['phone'];
+      const code = row['prize code'];
+
+      if (!name || !phone || !code) continue;
+
+      const codeID = await this.prisma.code.findUnique({
+        where: { code },
+      });
+
+      if (!codeID || codeID.used) {
+        invalidCodes.push(code);
+        continue;
+      }
+
+      try {
+        await this.prisma.$transaction(async (tx) => {
+          await tx.code.update({
+            where: { id: codeID.id },
+            data: { used: true },
+          });
+
+          await tx.customerRecord.create({
+            data: {
+              name,
+              phone,
+              codeId: codeID.id,
+              outletName: 'shww ohh',
+            },
+          });
+        });
+
+        createdCount++;
+      } catch (error) {
+        if (error.code === 'P2002') {
+          // Duplicate phone, skip
+        } else {
+          throw error;
+        }
+      }
+    }
+
+    return {
+      createdCount,
+      invalidCodes,
+    };
+  }
+  async bulkCreateFromExcelData(rows: any[]) {
+    let createdCount = 0;
+    const failedRows: { row: number; reason: string }[] = [];
+
+    for (let i = 0; i < rows.length; i++) {
+      const row = rows[i];
+      const rowNumber = i + 2;
+
+      const name = row['name'];
+      const phone = row['phone']?.toString().trim();
+
+      const code = row['code'];
+
+      if (!name || !phone || !code) {
+        failedRows.push({ row: rowNumber, reason: 'Missing required fields' });
+        continue;
+      }
+
+      const codeRecord = await this.prisma.code.findUnique({
+        where: { code },
+      });
+
+      if (!codeRecord) {
+        failedRows.push({ row: rowNumber, reason: 'Code does not exist' });
+        continue;
+      }
+
+      if (codeRecord.used) {
+        failedRows.push({ row: rowNumber, reason: 'Code already used' });
+        continue;
+      }
+
+      // try {
+      await this.prisma.$transaction(async (tx) => {
+        await tx.code.update({
+          where: { id: codeRecord.id },
+          data: { used: true },
+        });
+
+        await tx.customerRecord.create({
+          data: {
+            name,
+            phone,
+            outletName: 'shww ohh',
+            codeId: codeRecord.id,
+          },
+        });
+      });
+
+      createdCount++;
+      // }
+    }
+
+    return {
+      createdCount,
+      failedRows,
+    };
   }
 }
