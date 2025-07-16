@@ -35,8 +35,11 @@ export class CustomerRecordService {
             outletName: dto.outletName,
           },
         });
-
-        return record;
+        const code = await tx.code.findUnique({
+          where: { id: record.codeId },
+          select: { code: true, prizeName: true },
+        });
+        return { record, prizeName: code.prizeName };
       });
 
       return result;
