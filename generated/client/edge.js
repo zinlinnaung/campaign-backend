@@ -140,7 +140,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "E:\\Work\\Campaign\\campaign-backend\\generated\\client",
+      "value": "/var/www/html/campaign-backend/generated/client",
       "fromEnvVar": null
     },
     "config": {
@@ -149,12 +149,12 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "windows",
+        "value": "debian-openssl-3.0.x",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "E:\\Work\\Campaign\\campaign-backend\\prisma\\schema.prisma",
+    "sourceFilePath": "/var/www/html/campaign-backend/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -172,7 +172,7 @@ const config = {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "mysql://root:root123@localhost:3306/campaign"
+        "value": "mysql://docker:Tharapa2025%23@172.31.37.117:3306/mega-campaign"
       }
     }
   },
