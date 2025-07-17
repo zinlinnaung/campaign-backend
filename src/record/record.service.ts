@@ -17,8 +17,12 @@ export class CustomerRecordService {
         where: { code: dto.code },
       });
 
-      if (!codeID || codeID.used) {
-        throw new ConflictException('Invalid or already used code');
+      if (!codeID) {
+        throw new ConflictException('Invalid code');
+      }
+
+      if (codeID.used) {
+        throw new ConflictException('Code has already been used');
       }
 
       const result = await this.prisma.$transaction(async (tx) => {
@@ -198,7 +202,7 @@ export class CustomerRecordService {
               name,
               phone,
               codeId: codeID.id,
-              outletName: 'shww ohh',
+              outletName: 'Shwe Ohh',
               township: township, // Default value, can be modified as needed
             },
           });
@@ -263,7 +267,7 @@ export class CustomerRecordService {
           data: {
             name,
             phone,
-            outletName: 'shww ohh',
+            outletName: 'Shwe Ohh',
             codeId: codeRecord.id,
             township: township, // Default value, can be modified as needed
           },
