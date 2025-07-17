@@ -2002,6 +2002,7 @@ export namespace Prisma {
     phone: string | null
     codeId: number | null
     outletName: string | null
+    township: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -2012,6 +2013,7 @@ export namespace Prisma {
     phone: string | null
     codeId: number | null
     outletName: string | null
+    township: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -2022,6 +2024,7 @@ export namespace Prisma {
     phone: number
     codeId: number
     outletName: number
+    township: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -2044,6 +2047,7 @@ export namespace Prisma {
     phone?: true
     codeId?: true
     outletName?: true
+    township?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2054,6 +2058,7 @@ export namespace Prisma {
     phone?: true
     codeId?: true
     outletName?: true
+    township?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2064,6 +2069,7 @@ export namespace Prisma {
     phone?: true
     codeId?: true
     outletName?: true
+    township?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -2161,6 +2167,7 @@ export namespace Prisma {
     phone: string
     codeId: number
     outletName: string
+    township: string
     createdAt: Date
     updatedAt: Date
     _count: CustomerRecordCountAggregateOutputType | null
@@ -2190,6 +2197,7 @@ export namespace Prisma {
     phone?: boolean
     codeId?: boolean
     outletName?: boolean
+    township?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     code?: boolean | CodeDefaultArgs<ExtArgs>
@@ -2203,11 +2211,12 @@ export namespace Prisma {
     phone?: boolean
     codeId?: boolean
     outletName?: boolean
+    township?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type CustomerRecordOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "phone" | "codeId" | "outletName" | "createdAt" | "updatedAt", ExtArgs["result"]["customerRecord"]>
+  export type CustomerRecordOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "phone" | "codeId" | "outletName" | "township" | "createdAt" | "updatedAt", ExtArgs["result"]["customerRecord"]>
   export type CustomerRecordInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     code?: boolean | CodeDefaultArgs<ExtArgs>
   }
@@ -2223,6 +2232,7 @@ export namespace Prisma {
       phone: string
       codeId: number
       outletName: string
+      township: string
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["customerRecord"]>
@@ -2600,6 +2610,7 @@ export namespace Prisma {
     readonly phone: FieldRef<"CustomerRecord", 'String'>
     readonly codeId: FieldRef<"CustomerRecord", 'Int'>
     readonly outletName: FieldRef<"CustomerRecord", 'String'>
+    readonly township: FieldRef<"CustomerRecord", 'String'>
     readonly createdAt: FieldRef<"CustomerRecord", 'DateTime'>
     readonly updatedAt: FieldRef<"CustomerRecord", 'DateTime'>
   }
@@ -2995,6 +3006,7 @@ export namespace Prisma {
     phone: 'phone',
     codeId: 'codeId',
     outletName: 'outletName',
+    township: 'township',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -3021,7 +3033,8 @@ export namespace Prisma {
   export const CustomerRecordOrderByRelevanceFieldEnum: {
     name: 'name',
     phone: 'phone',
-    outletName: 'outletName'
+    outletName: 'outletName',
+    township: 'township'
   };
 
   export type CustomerRecordOrderByRelevanceFieldEnum = (typeof CustomerRecordOrderByRelevanceFieldEnum)[keyof typeof CustomerRecordOrderByRelevanceFieldEnum]
@@ -3142,6 +3155,7 @@ export namespace Prisma {
     phone?: StringFilter<"CustomerRecord"> | string
     codeId?: IntFilter<"CustomerRecord"> | number
     outletName?: StringFilter<"CustomerRecord"> | string
+    township?: StringFilter<"CustomerRecord"> | string
     createdAt?: DateTimeFilter<"CustomerRecord"> | Date | string
     updatedAt?: DateTimeFilter<"CustomerRecord"> | Date | string
     code?: XOR<CodeScalarRelationFilter, CodeWhereInput>
@@ -3153,6 +3167,7 @@ export namespace Prisma {
     phone?: SortOrder
     codeId?: SortOrder
     outletName?: SortOrder
+    township?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     code?: CodeOrderByWithRelationInput
@@ -3168,6 +3183,7 @@ export namespace Prisma {
     phone?: StringFilter<"CustomerRecord"> | string
     codeId?: IntFilter<"CustomerRecord"> | number
     outletName?: StringFilter<"CustomerRecord"> | string
+    township?: StringFilter<"CustomerRecord"> | string
     createdAt?: DateTimeFilter<"CustomerRecord"> | Date | string
     updatedAt?: DateTimeFilter<"CustomerRecord"> | Date | string
     code?: XOR<CodeScalarRelationFilter, CodeWhereInput>
@@ -3179,6 +3195,7 @@ export namespace Prisma {
     phone?: SortOrder
     codeId?: SortOrder
     outletName?: SortOrder
+    township?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: CustomerRecordCountOrderByAggregateInput
@@ -3197,6 +3214,7 @@ export namespace Prisma {
     phone?: StringWithAggregatesFilter<"CustomerRecord"> | string
     codeId?: IntWithAggregatesFilter<"CustomerRecord"> | number
     outletName?: StringWithAggregatesFilter<"CustomerRecord"> | string
+    township?: StringWithAggregatesFilter<"CustomerRecord"> | string
     createdAt?: DateTimeWithAggregatesFilter<"CustomerRecord"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"CustomerRecord"> | Date | string
   }
@@ -3269,6 +3287,7 @@ export namespace Prisma {
     name: string
     phone: string
     outletName: string
+    township: string
     createdAt?: Date | string
     updatedAt?: Date | string
     code: CodeCreateNestedOneWithoutCustomerRecordInput
@@ -3280,6 +3299,7 @@ export namespace Prisma {
     phone: string
     codeId: number
     outletName: string
+    township: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -3288,6 +3308,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     outletName?: StringFieldUpdateOperationsInput | string
+    township?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     code?: CodeUpdateOneRequiredWithoutCustomerRecordNestedInput
@@ -3299,6 +3320,7 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     codeId?: IntFieldUpdateOperationsInput | number
     outletName?: StringFieldUpdateOperationsInput | string
+    township?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3309,6 +3331,7 @@ export namespace Prisma {
     phone: string
     codeId: number
     outletName: string
+    township: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -3317,6 +3340,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     outletName?: StringFieldUpdateOperationsInput | string
+    township?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3327,6 +3351,7 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     codeId?: IntFieldUpdateOperationsInput | number
     outletName?: StringFieldUpdateOperationsInput | string
+    township?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3497,6 +3522,7 @@ export namespace Prisma {
     phone?: SortOrder
     codeId?: SortOrder
     outletName?: SortOrder
+    township?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -3512,6 +3538,7 @@ export namespace Prisma {
     phone?: SortOrder
     codeId?: SortOrder
     outletName?: SortOrder
+    township?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -3522,6 +3549,7 @@ export namespace Prisma {
     phone?: SortOrder
     codeId?: SortOrder
     outletName?: SortOrder
+    township?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -3720,6 +3748,7 @@ export namespace Prisma {
     name: string
     phone: string
     outletName: string
+    township: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -3729,6 +3758,7 @@ export namespace Prisma {
     name: string
     phone: string
     outletName: string
+    township: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -3768,6 +3798,7 @@ export namespace Prisma {
     phone?: StringFilter<"CustomerRecord"> | string
     codeId?: IntFilter<"CustomerRecord"> | number
     outletName?: StringFilter<"CustomerRecord"> | string
+    township?: StringFilter<"CustomerRecord"> | string
     createdAt?: DateTimeFilter<"CustomerRecord"> | Date | string
     updatedAt?: DateTimeFilter<"CustomerRecord"> | Date | string
   }
@@ -3827,6 +3858,7 @@ export namespace Prisma {
     name: string
     phone: string
     outletName: string
+    township: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -3835,6 +3867,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     outletName?: StringFieldUpdateOperationsInput | string
+    township?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3844,6 +3877,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     outletName?: StringFieldUpdateOperationsInput | string
+    township?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3853,6 +3887,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     outletName?: StringFieldUpdateOperationsInput | string
+    township?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

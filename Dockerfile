@@ -20,7 +20,7 @@ RUN npm install -g pm2
 
 
 
-EXPOSE 5053
+EXPOSE 5056
 
 # Run the NestJS application
 CMD ["pm2-runtime", "dist/main.js"]

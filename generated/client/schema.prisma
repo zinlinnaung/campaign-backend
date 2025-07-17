@@ -26,6 +26,7 @@ model CustomerRecord {
   codeId     Int
   code       Code     @relation(fields: [codeId], references: [id])
   outletName String
+  township   String
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 }

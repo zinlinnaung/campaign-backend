@@ -33,6 +33,7 @@ export class CustomerRecordService {
             phone: dto.phone,
             codeId: codeID.id,
             outletName: dto.outletName,
+            township: dto.township,
           },
         });
         const code = await tx.code.findUnique({
@@ -172,6 +173,7 @@ export class CustomerRecordService {
       const name = row['name'];
       const phone = row['phone'];
       const code = row['prize code'];
+      const township = row['township']?.toString().trim() || 'Yangon'; // Default value, can be modified as needed
 
       if (!name || !phone || !code) continue;
 
@@ -197,6 +199,7 @@ export class CustomerRecordService {
               phone,
               codeId: codeID.id,
               outletName: 'shww ohh',
+              township: township, // Default value, can be modified as needed
             },
           });
         });
@@ -228,6 +231,7 @@ export class CustomerRecordService {
       const phone = row['phone']?.toString().trim();
 
       const code = row['code'];
+      const township = row['township']?.toString().trim() || 'Yangon'; // Default value, can be modified as needed
 
       if (!name || !phone || !code) {
         failedRows.push({ row: rowNumber, reason: 'Missing required fields' });
@@ -261,6 +265,7 @@ export class CustomerRecordService {
             phone,
             outletName: 'shww ohh',
             codeId: codeRecord.id,
+            township: township, // Default value, can be modified as needed
           },
         });
       });
