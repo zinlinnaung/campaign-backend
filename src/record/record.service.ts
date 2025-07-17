@@ -18,7 +18,7 @@ export class CustomerRecordService {
       });
 
       if (!codeID) {
-        throw new ConflictException('Invalid code');
+        throw new NotFoundException('Invalid code');
       }
 
       if (codeID.used) {
