@@ -46,9 +46,11 @@ export class CodeGeneratorService {
     const ferrovitCodes = this.generateUniqueCodes(perPrize, 6, existingSet);
     ferrovitCodes.forEach((c) => existingSet.add(c));
     const enatCodes = this.generateUniqueCodes(perPrize, 6, existingSet);
+    const glucomealCodes = this.generateUniqueCodes(perPrize, 6, existingSet);
 
     const finalCodes = [
-      ...ferrovitCodes.map((code) => ({ code, prizeName: 'ferrovit' })),
+      ...glucomealCodes.map((code) => ({ code, prizeName: 'glucomeal' })),
+      // ...ferrovitCodes.map((code) => ({ code, prizeName: 'ferrovit' })),
       ...enatCodes.map((code) => ({ code, prizeName: 'enat' })),
     ];
 
