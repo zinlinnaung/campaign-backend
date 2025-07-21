@@ -1,9 +1,11 @@
 import {
+  Body,
   Controller,
   Get,
   HttpCode,
   HttpStatus,
   ParseIntPipe,
+  Post,
   Query,
   Res,
 } from '@nestjs/common';
@@ -12,18 +14,19 @@ import { Response } from 'express';
 import * as fs from 'fs';
 import { ApiBearerAuth } from '@nestjs/swagger';
 import { Parser } from 'json2csv';
+import { ExportCodesDto } from './dto/code.dto';
 
 @Controller('code-generator')
 export class CodeGeneratorController {
   constructor(private readonly service: CodeGeneratorService) {}
 
-  @Get('export')
-  async exportCodesToCSV(@Res() res: Response) {
-    const csv = await this.service.exportToCSV();
+  @Post('export')
+  async exportCodesToCSV(@Body() dto: ExportCodesDto, @Res() res: Response) {
+    const csv = await this.service.exportToCSV(dto);
 
     res.setHeader('Content-Disposition', 'attachment; filename="codes.csv"');
     res.setHeader('Content-Type', 'text/csv');
-    res.send(csv); // Send CSV content directly
+    res.send(csv);
   }
   @Get('all')
   async getAllCodes() {

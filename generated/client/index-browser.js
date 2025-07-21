@@ -137,6 +137,18 @@ exports.Prisma.CustomerRecordScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.UsersScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  password: 'password',
+  reset_code: 'reset_code',
+  role: 'role',
+  is_active: 'is_active',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -154,10 +166,26 @@ exports.Prisma.CustomerRecordOrderByRelevanceFieldEnum = {
   township: 'township'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
+exports.Prisma.UsersOrderByRelevanceFieldEnum = {
+  name: 'name',
+  email: 'email',
+  password: 'password',
+  reset_code: 'reset_code'
+};
+exports.Role = exports.$Enums.Role = {
+  User: 'User',
+  Admin: 'Admin'
+};
 
 exports.Prisma.ModelName = {
   Code: 'Code',
-  CustomerRecord: 'CustomerRecord'
+  CustomerRecord: 'CustomerRecord',
+  Users: 'Users'
 };
 
 /**

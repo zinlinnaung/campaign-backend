@@ -9,6 +9,8 @@ import { ConfigModule } from '@nestjs/config';
 import { MulterModule } from '@nestjs/platform-express';
 import { CodeModule } from './code/code.module';
 import { RecordModule } from './record/record.module';
+import { APP_GUARD } from '@nestjs/core';
+import { AtGuard } from './common/guards';
 // import { TelegramModule } from './telegram/telegram.module';
 // import { CmsModule } from './cms/cms.module';
 // import { QueueModule } from './queue/queue.module';

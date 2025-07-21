@@ -3,6 +3,7 @@ import { PrismaService } from '../prisma/prisma.service';
 import { writeFileSync } from 'fs';
 import { Parser } from 'json2csv';
 import * as path from 'path';
+import { ExportCodesDto } from './dto/code.dto';
 
 @Injectable()
 export class CodeGeneratorService {
@@ -32,34 +33,26 @@ export class CodeGeneratorService {
     return Array.from(codes);
   }
 
-  async exportToCSV(): Promise<string> {
-    const totalNeeded = 2000;
-    const perPrize = 1000;
-
-    // 🔍 1. Fetch existing codes
+  async exportToCSV(dto: ExportCodesDto): Promise<string> {
     const existing = await this.prisma.code.findMany({
       select: { code: true },
     });
     const existingSet = new Set(existing.map((e) => e.code));
 
-    // 🔢 2. Generate codes
-    const ferrovitCodes = this.generateUniqueCodes(perPrize, 6, existingSet);
-    ferrovitCodes.forEach((c) => existingSet.add(c));
-    const enatCodes = this.generateUniqueCodes(perPrize, 6, existingSet);
-    const glucomealCodes = this.generateUniqueCodes(perPrize, 6, existingSet);
+    const finalCodes = [];
 
-    const finalCodes = [
-      ...glucomealCodes.map((code) => ({ code, prizeName: 'glucomeal' })),
-      // ...ferrovitCodes.map((code) => ({ code, prizeName: 'ferrovit' })),
-      ...enatCodes.map((code) => ({ code, prizeName: 'enat' })),
-    ];
+    for (const prize of dto.prizes) {
+      const generated = this.generateUniqueCodes(prize.count, 6, existingSet);
+      generated.forEach((c) => existingSet.add(c));
+      finalCodes.push(
+        ...generated.map((code) => ({ code, prizeName: prize.prizeName })),
+      );
+    }
 
-    // 💾 3. Insert into DB
     const inserted = await this.prisma.$transaction(
       finalCodes.map((codeObj) => this.prisma.code.create({ data: codeObj })),
     );
 
-    // 🧾 4. Convert to CSV (no file saving)
     const data = inserted.map((item) => ({
       code: item.code,
       name: item.prizeName,
@@ -68,6 +61,7 @@ export class CodeGeneratorService {
     const parser = new Parser({ fields: ['code', 'name'] });
     return parser.parse(data); // Return CSV string
   }
+
   async getAllCodes() {
     return this.prisma.code.findMany({
       orderBy: { id: 'desc' },

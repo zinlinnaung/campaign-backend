@@ -16,7 +16,8 @@ import { CreateCustomerRecordDto, UpdateCustomerRecordDto } from './dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 
 import * as multer from 'multer';
-
+import { ApiTags } from '@nestjs/swagger';
+@ApiTags('User')
 @Controller('customer-records')
 export class CustomerRecordController {
   constructor(private readonly service: CustomerRecordService) {}
