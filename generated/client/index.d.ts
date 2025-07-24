@@ -3097,7 +3097,7 @@ export namespace Prisma {
   export type UsersMinAggregateOutputType = {
     id: number | null
     name: string | null
-    email: string | null
+    phone: string | null
     password: string | null
     reset_code: string | null
     role: $Enums.Role | null
@@ -3109,7 +3109,7 @@ export namespace Prisma {
   export type UsersMaxAggregateOutputType = {
     id: number | null
     name: string | null
-    email: string | null
+    phone: string | null
     password: string | null
     reset_code: string | null
     role: $Enums.Role | null
@@ -3121,7 +3121,7 @@ export namespace Prisma {
   export type UsersCountAggregateOutputType = {
     id: number
     name: number
-    email: number
+    phone: number
     password: number
     reset_code: number
     role: number
@@ -3143,7 +3143,7 @@ export namespace Prisma {
   export type UsersMinAggregateInputType = {
     id?: true
     name?: true
-    email?: true
+    phone?: true
     password?: true
     reset_code?: true
     role?: true
@@ -3155,7 +3155,7 @@ export namespace Prisma {
   export type UsersMaxAggregateInputType = {
     id?: true
     name?: true
-    email?: true
+    phone?: true
     password?: true
     reset_code?: true
     role?: true
@@ -3167,7 +3167,7 @@ export namespace Prisma {
   export type UsersCountAggregateInputType = {
     id?: true
     name?: true
-    email?: true
+    phone?: true
     password?: true
     reset_code?: true
     role?: true
@@ -3266,7 +3266,7 @@ export namespace Prisma {
   export type UsersGroupByOutputType = {
     id: number
     name: string | null
-    email: string
+    phone: string
     password: string
     reset_code: string | null
     role: $Enums.Role
@@ -3297,7 +3297,7 @@ export namespace Prisma {
   export type UsersSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    email?: boolean
+    phone?: boolean
     password?: boolean
     reset_code?: boolean
     role?: boolean
@@ -3311,7 +3311,7 @@ export namespace Prisma {
   export type UsersSelectScalar = {
     id?: boolean
     name?: boolean
-    email?: boolean
+    phone?: boolean
     password?: boolean
     reset_code?: boolean
     role?: boolean
@@ -3320,7 +3320,7 @@ export namespace Prisma {
     updated_at?: boolean
   }
 
-  export type UsersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password" | "reset_code" | "role" | "is_active" | "created_at" | "updated_at", ExtArgs["result"]["users"]>
+  export type UsersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "phone" | "password" | "reset_code" | "role" | "is_active" | "created_at" | "updated_at", ExtArgs["result"]["users"]>
 
   export type $UsersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Users"
@@ -3328,7 +3328,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string | null
-      email: string
+      phone: string
       password: string
       reset_code: string | null
       role: $Enums.Role
@@ -3706,7 +3706,7 @@ export namespace Prisma {
   interface UsersFieldRefs {
     readonly id: FieldRef<"Users", 'Int'>
     readonly name: FieldRef<"Users", 'String'>
-    readonly email: FieldRef<"Users", 'String'>
+    readonly phone: FieldRef<"Users", 'String'>
     readonly password: FieldRef<"Users", 'String'>
     readonly reset_code: FieldRef<"Users", 'String'>
     readonly role: FieldRef<"Users", 'Role'>
@@ -4077,7 +4077,7 @@ export namespace Prisma {
   export const UsersScalarFieldEnum: {
     id: 'id',
     name: 'name',
-    email: 'email',
+    phone: 'phone',
     password: 'password',
     reset_code: 'reset_code',
     role: 'role',
@@ -4125,7 +4125,7 @@ export namespace Prisma {
 
   export const UsersOrderByRelevanceFieldEnum: {
     name: 'name',
-    email: 'email',
+    phone: 'phone',
     password: 'password',
     reset_code: 'reset_code'
   };
@@ -4325,7 +4325,7 @@ export namespace Prisma {
     NOT?: UsersWhereInput | UsersWhereInput[]
     id?: IntFilter<"Users"> | number
     name?: StringNullableFilter<"Users"> | string | null
-    email?: StringFilter<"Users"> | string
+    phone?: StringFilter<"Users"> | string
     password?: StringFilter<"Users"> | string
     reset_code?: StringNullableFilter<"Users"> | string | null
     role?: EnumRoleFilter<"Users"> | $Enums.Role
@@ -4337,7 +4337,7 @@ export namespace Prisma {
   export type UsersOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrderInput | SortOrder
-    email?: SortOrder
+    phone?: SortOrder
     password?: SortOrder
     reset_code?: SortOrderInput | SortOrder
     role?: SortOrder
@@ -4349,7 +4349,7 @@ export namespace Prisma {
 
   export type UsersWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    email?: string
+    phone?: string
     AND?: UsersWhereInput | UsersWhereInput[]
     OR?: UsersWhereInput[]
     NOT?: UsersWhereInput | UsersWhereInput[]
@@ -4360,12 +4360,12 @@ export namespace Prisma {
     is_active?: BoolFilter<"Users"> | boolean
     created_at?: DateTimeFilter<"Users"> | Date | string
     updated_at?: DateTimeFilter<"Users"> | Date | string
-  }, "id" | "email">
+  }, "id" | "phone">
 
   export type UsersOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrderInput | SortOrder
-    email?: SortOrder
+    phone?: SortOrder
     password?: SortOrder
     reset_code?: SortOrderInput | SortOrder
     role?: SortOrder
@@ -4385,7 +4385,7 @@ export namespace Prisma {
     NOT?: UsersScalarWhereWithAggregatesInput | UsersScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Users"> | number
     name?: StringNullableWithAggregatesFilter<"Users"> | string | null
-    email?: StringWithAggregatesFilter<"Users"> | string
+    phone?: StringWithAggregatesFilter<"Users"> | string
     password?: StringWithAggregatesFilter<"Users"> | string
     reset_code?: StringNullableWithAggregatesFilter<"Users"> | string | null
     role?: EnumRoleWithAggregatesFilter<"Users"> | $Enums.Role
@@ -4533,7 +4533,7 @@ export namespace Prisma {
 
   export type UsersCreateInput = {
     name?: string | null
-    email: string
+    phone: string
     password: string
     reset_code?: string | null
     role?: $Enums.Role
@@ -4545,7 +4545,7 @@ export namespace Prisma {
   export type UsersUncheckedCreateInput = {
     id?: number
     name?: string | null
-    email: string
+    phone: string
     password: string
     reset_code?: string | null
     role?: $Enums.Role
@@ -4556,7 +4556,7 @@ export namespace Prisma {
 
   export type UsersUpdateInput = {
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     reset_code?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -4568,7 +4568,7 @@ export namespace Prisma {
   export type UsersUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     reset_code?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -4580,7 +4580,7 @@ export namespace Prisma {
   export type UsersCreateManyInput = {
     id?: number
     name?: string | null
-    email: string
+    phone: string
     password: string
     reset_code?: string | null
     role?: $Enums.Role
@@ -4591,7 +4591,7 @@ export namespace Prisma {
 
   export type UsersUpdateManyMutationInput = {
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     reset_code?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -4603,7 +4603,7 @@ export namespace Prisma {
   export type UsersUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     reset_code?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
@@ -4851,7 +4851,7 @@ export namespace Prisma {
   export type UsersCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    email?: SortOrder
+    phone?: SortOrder
     password?: SortOrder
     reset_code?: SortOrder
     role?: SortOrder
@@ -4867,7 +4867,7 @@ export namespace Prisma {
   export type UsersMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    email?: SortOrder
+    phone?: SortOrder
     password?: SortOrder
     reset_code?: SortOrder
     role?: SortOrder
@@ -4879,7 +4879,7 @@ export namespace Prisma {
   export type UsersMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    email?: SortOrder
+    phone?: SortOrder
     password?: SortOrder
     reset_code?: SortOrder
     role?: SortOrder

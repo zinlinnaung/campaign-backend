@@ -22,12 +22,15 @@ export class UserService {
   async create_user(userDto: UserDto): Promise<Users> {
     const user = await this.prisma.users.findUnique({
       where: {
-        email: userDto.email,
+        phone: userDto.phone,
       },
     });
 
     if (user)
-      throw new HttpException('Email already exist.', HttpStatus.BAD_REQUEST);
+      throw new HttpException(
+        'Phone no already exist.',
+        HttpStatus.BAD_REQUEST,
+      );
 
     const new_user = await this.prisma.users.create({
       data: {
@@ -83,7 +86,7 @@ export class UserService {
     } catch (error) {
       if (error instanceof PrismaClientKnownRequestError) {
         if (error.code === 'P2002') {
-          throw new BadRequestException('Email already taken.');
+          throw new BadRequestException('Phone no already taken.');
         }
       } else {
         throw error;
@@ -95,7 +98,7 @@ export class UserService {
     const users = await this.prisma.users.findMany({
       select: {
         id: true,
-        email: true,
+        phone: true,
         role: true,
         is_active: true,
         created_at: true,
@@ -133,7 +136,7 @@ export class UserService {
     } catch (error) {
       if (error instanceof PrismaClientKnownRequestError) {
         if (error.code === 'P2002') {
-          throw new BadRequestException('Email already taken.');
+          throw new BadRequestException('Phone no already taken.');
         }
       } else {
         throw error;

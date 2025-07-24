@@ -34,7 +34,7 @@ model CustomerRecord {
 model Users {
   id         Int      @id @default(autoincrement())
   name       String?
-  email      String   @unique
+  phone      String   @unique
   password   String
   reset_code String?
   role       Role     @default(Admin)

@@ -17,26 +17,31 @@ import { FileInterceptor } from '@nestjs/platform-express';
 
 import * as multer from 'multer';
 import { ApiTags } from '@nestjs/swagger';
-@ApiTags('User')
+import { Public } from 'src/common/decorators';
+@ApiTags('Records')
 @Controller('customer-records')
 export class CustomerRecordController {
   constructor(private readonly service: CustomerRecordService) {}
 
+  @Public()
   @Post()
   async create(@Body() dto: CreateCustomerRecordDto) {
     return this.service.create(dto);
   }
 
+  @Public()
   @Post('upload-excel')
   async uploadExcel(@Body() body: { records: any[] }) {
     return this.service.bulkCreateFromExcelData(body.records);
   }
 
+  @Public()
   @Post('upload-excel-data')
   async uploadExcelData(@Body() body: { records: any[] }) {
     return this.service.bulkCreateFromExcelData(body.records);
   }
 
+  @Public()
   @Get()
   async findAll(@Query() query: any) {
     const { outletName, phone, code, startDate, endDate } = query;
@@ -50,11 +55,13 @@ export class CustomerRecordController {
     });
   }
 
+  @Public()
   @Get(':id')
   async findOne(@Param('id', ParseIntPipe) id: number) {
     return this.service.findOne(id);
   }
 
+  @Public()
   @Patch(':id')
   async update(
     @Param('id', ParseIntPipe) id: number,
@@ -63,6 +70,7 @@ export class CustomerRecordController {
     return this.service.update(id, dto);
   }
 
+  @Public()
   @Delete(':id')
   async remove(@Param('id', ParseIntPipe) id: number) {
     return this.service.remove(id);

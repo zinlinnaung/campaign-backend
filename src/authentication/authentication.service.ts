@@ -20,13 +20,13 @@ export class AuthenticationService {
   ): Promise<AuthenticationToken> {
     const user = await this.prisma.users.findUnique({
       where: {
-        email: authDto.email,
+        phone: authDto.phone,
       },
     });
 
     if (!user)
       throw new HttpException(
-        'Incorrect Email or Password',
+        'Incorrect Phone no or Password',
         HttpStatus.UNAUTHORIZED,
       );
 
@@ -40,7 +40,7 @@ export class AuthenticationService {
     const [at, rt] = await Promise.all([
       this.generateToken(
         {
-          email: user.email,
+          phone: user.phone,
           sub: user.id,
           role: user.role,
           token_type: TokenEnum.ACCESS,
@@ -50,7 +50,7 @@ export class AuthenticationService {
       ),
       this.generateToken(
         {
-          email: user.email,
+          phone: user.phone,
           sub: user.id,
           role: user.role,
           token_type: TokenEnum.REFRESH,
@@ -67,13 +67,13 @@ export class AuthenticationService {
   async login(authDto: AuthenticationDto): Promise<AuthenticationToken> {
     const user = await this.prisma.users.findUnique({
       where: {
-        email: authDto.email,
+        phone: authDto.phone,
       },
     });
 
     if (!user)
       throw new HttpException(
-        'Incorrect Email or Password',
+        'Incorrect Phone no or Password',
         HttpStatus.UNAUTHORIZED,
       );
 
@@ -87,7 +87,7 @@ export class AuthenticationService {
     const [at, rt] = await Promise.all([
       this.generateToken(
         {
-          email: user.email,
+          phone: user.phone,
           sub: user.id,
           role: user.role,
           token_type: TokenEnum.ACCESS,
@@ -97,7 +97,7 @@ export class AuthenticationService {
       ),
       this.generateToken(
         {
-          email: user.email,
+          phone: user.phone,
           sub: user.id,
           role: user.role,
           token_type: TokenEnum.REFRESH,
@@ -120,7 +120,7 @@ export class AuthenticationService {
 
     const at = await this.generateToken(
       {
-        email: user.email,
+        phone: user.phone,
         sub: user.id,
         role: user.role,
         token_type: TokenEnum.ACCESS,

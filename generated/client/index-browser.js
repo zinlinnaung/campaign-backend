@@ -140,7 +140,7 @@ exports.Prisma.CustomerRecordScalarFieldEnum = {
 exports.Prisma.UsersScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  email: 'email',
+  phone: 'phone',
   password: 'password',
   reset_code: 'reset_code',
   role: 'role',
@@ -173,7 +173,7 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.UsersOrderByRelevanceFieldEnum = {
   name: 'name',
-  email: 'email',
+  phone: 'phone',
   password: 'password',
   reset_code: 'reset_code'
 };

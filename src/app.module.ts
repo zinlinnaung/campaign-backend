@@ -11,6 +11,8 @@ import { CodeModule } from './code/code.module';
 import { RecordModule } from './record/record.module';
 import { APP_GUARD } from '@nestjs/core';
 import { AtGuard } from './common/guards';
+import { AuthenticationModule } from './authentication/authentication.module';
+import { UserModule } from './user/user.module';
 // import { TelegramModule } from './telegram/telegram.module';
 // import { CmsModule } from './cms/cms.module';
 // import { QueueModule } from './queue/queue.module';
@@ -25,6 +27,8 @@ import { AtGuard } from './common/guards';
     MulterModule.register({
       dest: './uploads', // Specify the destination directory here
     }),
+    AuthenticationModule,
+    UserModule,
     CodeModule,
     RecordModule,
     PrismaModule,
@@ -37,6 +41,6 @@ import { AtGuard } from './common/guards';
     // EditorFlowModule,
   ],
   controllers: [],
-  // providers: [{ provide: APP_GUARD, useClass: AtGuard }],
+  providers: [{ provide: APP_GUARD, useClass: AtGuard }],
 })
 export class AppModule {}
