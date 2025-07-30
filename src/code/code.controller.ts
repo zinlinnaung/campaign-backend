@@ -12,14 +12,16 @@ import {
 import { CodeGeneratorService } from './code.service';
 import { Response } from 'express';
 import * as fs from 'fs';
-import { ApiBearerAuth } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { Parser } from 'json2csv';
 import { ExportCodesDto } from './dto/code.dto';
-
+import { Public } from 'src/common/decorators';
+@ApiTags('Codes')
 @Controller('code-generator')
 export class CodeGeneratorController {
   constructor(private readonly service: CodeGeneratorService) {}
 
+  @Public()
   @Post('export')
   async exportCodesToCSV(@Body() dto: ExportCodesDto, @Res() res: Response) {
     const csv = await this.service.exportToCSV(dto);
@@ -28,10 +30,13 @@ export class CodeGeneratorController {
     res.setHeader('Content-Type', 'text/csv');
     res.send(csv);
   }
+  @Public()
   @Get('all')
   async getAllCodes() {
     return this.service.getAllCodes();
   }
+
+  @Public()
   @ApiBearerAuth()
   @HttpCode(HttpStatus.OK)
   @Get('paginated')
@@ -43,6 +48,7 @@ export class CodeGeneratorController {
     return { codes: result.data, meta: result.meta };
   }
 
+  @Public()
   @ApiBearerAuth()
   @HttpCode(HttpStatus.OK)
   @Get('download')
