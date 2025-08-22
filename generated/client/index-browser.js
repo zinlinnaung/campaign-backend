@@ -133,6 +133,7 @@ exports.Prisma.CustomerRecordScalarFieldEnum = {
   codeId: 'codeId',
   outletName: 'outletName',
   township: 'township',
+  answer: 'answer',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -159,16 +160,17 @@ exports.Prisma.CodeOrderByRelevanceFieldEnum = {
   code: 'code'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 exports.Prisma.CustomerRecordOrderByRelevanceFieldEnum = {
   name: 'name',
   phone: 'phone',
   outletName: 'outletName',
-  township: 'township'
-};
-
-exports.Prisma.NullsOrder = {
-  first: 'first',
-  last: 'last'
+  township: 'township',
+  answer: 'answer'
 };
 
 exports.Prisma.UsersOrderByRelevanceFieldEnum = {

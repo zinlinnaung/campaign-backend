@@ -27,6 +27,7 @@ model CustomerRecord {
   code       Code     @relation(fields: [codeId], references: [id])
   outletName String
   township   String
+  answer     String?  @db.LongText
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 }

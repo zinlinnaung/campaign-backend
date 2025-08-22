@@ -2103,6 +2103,7 @@ export namespace Prisma {
     codeId: number | null
     outletName: string | null
     township: string | null
+    answer: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -2114,6 +2115,7 @@ export namespace Prisma {
     codeId: number | null
     outletName: string | null
     township: string | null
+    answer: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -2125,6 +2127,7 @@ export namespace Prisma {
     codeId: number
     outletName: number
     township: number
+    answer: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -2148,6 +2151,7 @@ export namespace Prisma {
     codeId?: true
     outletName?: true
     township?: true
+    answer?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2159,6 +2163,7 @@ export namespace Prisma {
     codeId?: true
     outletName?: true
     township?: true
+    answer?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2170,6 +2175,7 @@ export namespace Prisma {
     codeId?: true
     outletName?: true
     township?: true
+    answer?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -2268,6 +2274,7 @@ export namespace Prisma {
     codeId: number
     outletName: string
     township: string
+    answer: string | null
     createdAt: Date
     updatedAt: Date
     _count: CustomerRecordCountAggregateOutputType | null
@@ -2298,6 +2305,7 @@ export namespace Prisma {
     codeId?: boolean
     outletName?: boolean
     township?: boolean
+    answer?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     code?: boolean | CodeDefaultArgs<ExtArgs>
@@ -2312,11 +2320,12 @@ export namespace Prisma {
     codeId?: boolean
     outletName?: boolean
     township?: boolean
+    answer?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type CustomerRecordOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "phone" | "codeId" | "outletName" | "township" | "createdAt" | "updatedAt", ExtArgs["result"]["customerRecord"]>
+  export type CustomerRecordOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "phone" | "codeId" | "outletName" | "township" | "answer" | "createdAt" | "updatedAt", ExtArgs["result"]["customerRecord"]>
   export type CustomerRecordInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     code?: boolean | CodeDefaultArgs<ExtArgs>
   }
@@ -2333,6 +2342,7 @@ export namespace Prisma {
       codeId: number
       outletName: string
       township: string
+      answer: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["customerRecord"]>
@@ -2711,6 +2721,7 @@ export namespace Prisma {
     readonly codeId: FieldRef<"CustomerRecord", 'Int'>
     readonly outletName: FieldRef<"CustomerRecord", 'String'>
     readonly township: FieldRef<"CustomerRecord", 'String'>
+    readonly answer: FieldRef<"CustomerRecord", 'String'>
     readonly createdAt: FieldRef<"CustomerRecord", 'DateTime'>
     readonly updatedAt: FieldRef<"CustomerRecord", 'DateTime'>
   }
@@ -4067,6 +4078,7 @@ export namespace Prisma {
     codeId: 'codeId',
     outletName: 'outletName',
     township: 'township',
+    answer: 'answer',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -4105,22 +4117,23 @@ export namespace Prisma {
   export type CodeOrderByRelevanceFieldEnum = (typeof CodeOrderByRelevanceFieldEnum)[keyof typeof CodeOrderByRelevanceFieldEnum]
 
 
-  export const CustomerRecordOrderByRelevanceFieldEnum: {
-    name: 'name',
-    phone: 'phone',
-    outletName: 'outletName',
-    township: 'township'
-  };
-
-  export type CustomerRecordOrderByRelevanceFieldEnum = (typeof CustomerRecordOrderByRelevanceFieldEnum)[keyof typeof CustomerRecordOrderByRelevanceFieldEnum]
-
-
   export const NullsOrder: {
     first: 'first',
     last: 'last'
   };
 
   export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+  export const CustomerRecordOrderByRelevanceFieldEnum: {
+    name: 'name',
+    phone: 'phone',
+    outletName: 'outletName',
+    township: 'township',
+    answer: 'answer'
+  };
+
+  export type CustomerRecordOrderByRelevanceFieldEnum = (typeof CustomerRecordOrderByRelevanceFieldEnum)[keyof typeof CustomerRecordOrderByRelevanceFieldEnum]
 
 
   export const UsersOrderByRelevanceFieldEnum: {
@@ -4256,6 +4269,7 @@ export namespace Prisma {
     codeId?: IntFilter<"CustomerRecord"> | number
     outletName?: StringFilter<"CustomerRecord"> | string
     township?: StringFilter<"CustomerRecord"> | string
+    answer?: StringNullableFilter<"CustomerRecord"> | string | null
     createdAt?: DateTimeFilter<"CustomerRecord"> | Date | string
     updatedAt?: DateTimeFilter<"CustomerRecord"> | Date | string
     code?: XOR<CodeScalarRelationFilter, CodeWhereInput>
@@ -4268,6 +4282,7 @@ export namespace Prisma {
     codeId?: SortOrder
     outletName?: SortOrder
     township?: SortOrder
+    answer?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     code?: CodeOrderByWithRelationInput
@@ -4284,6 +4299,7 @@ export namespace Prisma {
     codeId?: IntFilter<"CustomerRecord"> | number
     outletName?: StringFilter<"CustomerRecord"> | string
     township?: StringFilter<"CustomerRecord"> | string
+    answer?: StringNullableFilter<"CustomerRecord"> | string | null
     createdAt?: DateTimeFilter<"CustomerRecord"> | Date | string
     updatedAt?: DateTimeFilter<"CustomerRecord"> | Date | string
     code?: XOR<CodeScalarRelationFilter, CodeWhereInput>
@@ -4296,6 +4312,7 @@ export namespace Prisma {
     codeId?: SortOrder
     outletName?: SortOrder
     township?: SortOrder
+    answer?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: CustomerRecordCountOrderByAggregateInput
@@ -4315,6 +4332,7 @@ export namespace Prisma {
     codeId?: IntWithAggregatesFilter<"CustomerRecord"> | number
     outletName?: StringWithAggregatesFilter<"CustomerRecord"> | string
     township?: StringWithAggregatesFilter<"CustomerRecord"> | string
+    answer?: StringNullableWithAggregatesFilter<"CustomerRecord"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"CustomerRecord"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"CustomerRecord"> | Date | string
   }
@@ -4463,6 +4481,7 @@ export namespace Prisma {
     phone: string
     outletName: string
     township: string
+    answer?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     code: CodeCreateNestedOneWithoutCustomerRecordInput
@@ -4475,6 +4494,7 @@ export namespace Prisma {
     codeId: number
     outletName: string
     township: string
+    answer?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -4484,6 +4504,7 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     outletName?: StringFieldUpdateOperationsInput | string
     township?: StringFieldUpdateOperationsInput | string
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     code?: CodeUpdateOneRequiredWithoutCustomerRecordNestedInput
@@ -4496,6 +4517,7 @@ export namespace Prisma {
     codeId?: IntFieldUpdateOperationsInput | number
     outletName?: StringFieldUpdateOperationsInput | string
     township?: StringFieldUpdateOperationsInput | string
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -4507,6 +4529,7 @@ export namespace Prisma {
     codeId: number
     outletName: string
     township: string
+    answer?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -4516,6 +4539,7 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     outletName?: StringFieldUpdateOperationsInput | string
     township?: StringFieldUpdateOperationsInput | string
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -4527,6 +4551,7 @@ export namespace Prisma {
     codeId?: IntFieldUpdateOperationsInput | number
     outletName?: StringFieldUpdateOperationsInput | string
     township?: StringFieldUpdateOperationsInput | string
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -4761,9 +4786,29 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type CodeScalarRelationFilter = {
     is?: CodeWhereInput
     isNot?: CodeWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type CustomerRecordOrderByRelevanceInput = {
@@ -4779,6 +4824,7 @@ export namespace Prisma {
     codeId?: SortOrder
     outletName?: SortOrder
     township?: SortOrder
+    answer?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -4795,6 +4841,7 @@ export namespace Prisma {
     codeId?: SortOrder
     outletName?: SortOrder
     township?: SortOrder
+    answer?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -4806,6 +4853,7 @@ export namespace Prisma {
     codeId?: SortOrder
     outletName?: SortOrder
     township?: SortOrder
+    answer?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -4815,7 +4863,7 @@ export namespace Prisma {
     codeId?: SortOrder
   }
 
-  export type StringNullableFilter<$PrismaModel = never> = {
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | null
     notIn?: string[] | null
@@ -4827,7 +4875,10 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     search?: string
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type EnumRoleFilter<$PrismaModel = never> = {
@@ -4835,11 +4886,6 @@ export namespace Prisma {
     in?: $Enums.Role[]
     notIn?: $Enums.Role[]
     not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
   }
 
   export type UsersOrderByRelevanceInput = {
@@ -4890,24 +4936,6 @@ export namespace Prisma {
 
   export type UsersSumOrderByAggregateInput = {
     id?: SortOrder
-  }
-
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type EnumRoleWithAggregatesFilter<$PrismaModel = never> = {
@@ -4988,16 +5016,16 @@ export namespace Prisma {
     connect?: CodeWhereUniqueInput
   }
 
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
   export type CodeUpdateOneRequiredWithoutCustomerRecordNestedInput = {
     create?: XOR<CodeCreateWithoutCustomerRecordInput, CodeUncheckedCreateWithoutCustomerRecordInput>
     connectOrCreate?: CodeCreateOrConnectWithoutCustomerRecordInput
     upsert?: CodeUpsertWithoutCustomerRecordInput
     connect?: CodeWhereUniqueInput
     update?: XOR<XOR<CodeUpdateToOneWithWhereWithoutCustomerRecordInput, CodeUpdateWithoutCustomerRecordInput>, CodeUncheckedUpdateWithoutCustomerRecordInput>
-  }
-
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
   }
 
   export type EnumRoleFieldUpdateOperationsInput = {
@@ -5128,13 +5156,6 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type NestedEnumRoleFilter<$PrismaModel = never> = {
-    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
-    in?: $Enums.Role[]
-    notIn?: $Enums.Role[]
-    not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
-  }
-
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | null
@@ -5164,6 +5185,13 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedEnumRoleFilter<$PrismaModel = never> = {
+    equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.Role[]
+    notIn?: $Enums.Role[]
+    not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
+  }
+
   export type NestedEnumRoleWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.Role | EnumRoleFieldRefInput<$PrismaModel>
     in?: $Enums.Role[]
@@ -5179,6 +5207,7 @@ export namespace Prisma {
     phone: string
     outletName: string
     township: string
+    answer?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -5189,6 +5218,7 @@ export namespace Prisma {
     phone: string
     outletName: string
     township: string
+    answer?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -5229,6 +5259,7 @@ export namespace Prisma {
     codeId?: IntFilter<"CustomerRecord"> | number
     outletName?: StringFilter<"CustomerRecord"> | string
     township?: StringFilter<"CustomerRecord"> | string
+    answer?: StringNullableFilter<"CustomerRecord"> | string | null
     createdAt?: DateTimeFilter<"CustomerRecord"> | Date | string
     updatedAt?: DateTimeFilter<"CustomerRecord"> | Date | string
   }
@@ -5289,6 +5320,7 @@ export namespace Prisma {
     phone: string
     outletName: string
     township: string
+    answer?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -5298,6 +5330,7 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     outletName?: StringFieldUpdateOperationsInput | string
     township?: StringFieldUpdateOperationsInput | string
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5308,6 +5341,7 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     outletName?: StringFieldUpdateOperationsInput | string
     township?: StringFieldUpdateOperationsInput | string
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5318,6 +5352,7 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     outletName?: StringFieldUpdateOperationsInput | string
     township?: StringFieldUpdateOperationsInput | string
+    answer?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

@@ -18,6 +18,10 @@ export class CreateCustomerRecordDto {
   @IsString()
   @IsNotEmpty()
   township: string;
+
+  @IsString()
+  @IsNotEmpty()
+  answer: string;
 }
 
 export class UpdateCustomerRecordDto extends PartialType(

@@ -38,6 +38,7 @@ export class CustomerRecordService {
             codeId: codeID.id,
             outletName: dto.outletName,
             township: dto.township,
+            answer: dto.answer,
           },
         });
         const code = await tx.code.findUnique({
